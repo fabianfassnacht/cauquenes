@@ -1,7 +1,7 @@
-## R-Script - modeling steps
+## R-Script - GLCM function
 ## author: Andrés Ceballos Comisso
 ## mail: aceballos@ug.uchile.cl / fabianewaldfassnacht@gmail.com
-## Manuscript: Importance of sample size, data type and prediction method for remote sensing-based estimations of aboveground forest biomass. Submitted to Remote Sensing of Environment
+## Manuscript: Using Multi-Sensor Data to Derive a Landscape-Level Biomass Map Covering Multiple Vegetation Types
 ## last changes: 30.07.2014
 ##
 

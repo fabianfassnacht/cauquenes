@@ -1,7 +1,7 @@
 ## R-Script - extracting iterative validation results
 ## author: Fabian Fassnacht 
 ## mail: fabianewaldfassnacht@gmail.com
-## Manuscript: 
+## Manuscript: Using Multi-Sensor Data to Derive a Landscape-Level Biomass Map Covering Multiple Vegetation Types
 ## last changes: 05.04.2020
 ##
 
