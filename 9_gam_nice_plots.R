@@ -8,6 +8,11 @@
 ## last changes: 15.04.2020
 ##
 
+# inputs:
+## gam_model = object fitted with gcvm::gam function; 
+## data = data used in the gam-model; 
+## nrr = number of rows in multi-panel plot, nrc = number of columns in multi-panel plot 
+## nrr and nrc should be decided based on the number of predictors you use in your gam model
 
 
 gam_nice_plot <- function(gam_model, data, nrr, nrc){
