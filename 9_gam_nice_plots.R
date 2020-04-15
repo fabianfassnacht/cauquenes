@@ -1,7 +1,7 @@
-gam_nice_plot <- function(gam_model, data){
+gam_nice_plot <- function(gam_model, data, nrr, nrc){
   
   # get variables used in the gam model
-  z <- attr(gam_m_pr$terms, "term.labels")
+  z <- attr(gam_model$terms, "term.labels")
   
   # create empty list to store new data to
   # predict to
@@ -9,8 +9,8 @@ gam_nice_plot <- function(gam_model, data){
   
   # create new data to predict to
   for (ip in 1:length(z)){
-    maxv<-max(gam_prad[,z[ip]])
-    minv<-min(gam_prad[,z[ip]])
+    maxv<-max(data[,z[ip]])
+    minv<-min(data[,z[ip]])
     v.seq<-seq(minv, maxv, length=300)
     v.df <- data.frame(v.seq)
     names(v.df) <- z[ip]
@@ -34,11 +34,9 @@ gam_nice_plot <- function(gam_model, data){
     newdata3[[ip2]] <- data.frame(vfit,vfit.up95,vfit.low95)
   }
   
-  # get number of predictors to define layout of plot
-  getnrnc <- ceiling(sqrt(length(z))) 
-  
+
   #x11()
-  par(mfrow=c(getnrnc-1,getnrnc), mar=c(4,4,2,4), oma=c(1,0.5,0.5,0.5))
+  par(mfrow=c(nrr,nrc), mar=c(4,4,2,4), oma=c(1,0.5,0.5,0.5))
   
   # now plot response curves for all predictors
   for(ip3 in 1:length(z)){
@@ -49,9 +47,12 @@ gam_nice_plot <- function(gam_model, data){
     
     # plot response curves (dont show yet)
     dum <- newdata3[[ip3]]
+    # get entries necessary to calculate edf values
+    edfval <- str_detect(names(gam_model$edf), z[ip3])
+    
     plot(newdata2[,ip3], dum[,1], type="n", lwd=3,
          main="", ylim = c(min(partial.resids), max(partial.resids)),
-         ylab=paste0(z[ip3], " (", round(sum(gam_model$edf[-1]),2), ")", sep=""), xlab=paste0(z[ip3]))
+         ylab=paste0(z[ip3], " (", round(sum(gam_model$edf[edfval]),2), ")", sep=""), xlab=paste0(z[ip3]))
     
     # plot standard deviations
     polygon(c(newdata2[,ip3], rev(newdata2[,ip3])), 
