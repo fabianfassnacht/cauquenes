@@ -1,3 +1,15 @@
+## R-Script - create nice gam plots 
+
+# The script bases on the code provided here:
+# http://zevross.com/blog/2014/09/15/recreate-the-gam-partial-regression-smooth-plots-from-r-package-mgcv-with-a-little-style/
+
+## author: Fabian Fassnacht
+## mail: fabianewaldfassnacht@gmail.com
+## last changes: 15.04.2020
+##
+
+
+
 gam_nice_plot <- function(gam_model, data, nrr, nrc){
   
   # get variables used in the gam model
